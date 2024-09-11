@@ -1,21 +1,20 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.views.generic import ListView
-from .models import Evento
-
-class EventoListView(ListView):
-    model = Evento
-    template_name = 'eventos/evento_list.html'
-    context_object_name = 'eventos'
-
-
-from django.views.generic.edit import CreateView
+from django.shortcuts import render, redirect 
 from .models import Evento
 from .forms import EventoForm
+from  . import forms
 
-class EventoCreateView(CreateView):
-    model = Evento
-    form_class = EventoForm
-    template_name = 'eventos/evento_form.html'
-    success_url = '/eventos/'
+def eventos(request):
+    eventos = Evento.objects.all()
+    return render(request, 'evento.list.html', {'eventos': eventos})
+
+
+def crearEventos(request):
+    if request.method == 'POST':
+        form = EventoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('evento-list')  # Redirige a una vista específica después de guardar
+    else:
+        form = EventoForm()
+
+    return render(request, 'evento_form.html', {'form': form})
