@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Organizador</title>
+</head>
+<body>
+    <h1>Crear un nuevo Organizador</h1>
+
+    <!-- Mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'organizador-list' %}">Volver a la lista de organizadores</a>
+</body>
+</html>
+
