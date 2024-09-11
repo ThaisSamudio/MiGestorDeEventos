@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Organizadores</title>
+</head>
+<body>
+    <h1>Lista de Organizadores</h1>
+    <ul>
+        {% for organizador in organizadores %}
+            <li>{{ organizador.nombre }} - {{ organizador.email }}</li>
+        {% empty %}
+            <li>No hay organizadores.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'organizador-crear' %}">Crear nuevo organizador</a>
+</body>
+</html>
