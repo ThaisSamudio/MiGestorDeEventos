@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Evento</title>
+</head>
+<body>
+    <h1>Editar Evento {{ evento.titulo }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+    <a href="{% url 'evento-list' %}">Volver a la lista de eventos</a>
+</body>
+</html>
