@@ -2,11 +2,10 @@
 from django import forms
 from .models import Evento, Organizador
 from django.core.exceptions import ValidationError
-
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ['titulo', 'fecha', 'organizador']
+        fields = ['titulo', 'descripcion', 'fecha', 'ubicacion', 'organizador'] 
 
     def clean_titulo(self):
         titulo = self.cleaned_data.get('titulo')
@@ -18,4 +17,3 @@ class OrganizadorForm(forms.ModelForm):
     class Meta:
         model = Organizador
         fields = ['nombre', 'email']
-
