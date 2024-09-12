@@ -11,7 +11,9 @@ class Organizador(models.Model):
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=200)
+    descripcion = models.TextField(default = "")
     fecha = models.DateField()
+    ubicacion = models.TextField(default="")
     organizador = models.ForeignKey(Organizador, on_delete=models.CASCADE, related_name='eventos')
 
     def __str__(self):
