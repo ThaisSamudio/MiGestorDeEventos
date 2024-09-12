@@ -6,6 +6,8 @@
 </head>
 <body>
     <h1>Lista de Eventos</h1>
+    <p>{{ user.username }}</p>
+    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
     <ul>
         {% for evento in eventos %}
             <li>
